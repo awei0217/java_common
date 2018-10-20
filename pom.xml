@@ -4,10 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>java._common</groupId>
-    <artifactId>java._common</artifactId>
-
+    <groupId>java_common</groupId>
+    <artifactId>java_common</artifactId>
+    <version>1.0</version>
     <dependencies>
 
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ognl</groupId>
+            <artifactId>ognl</artifactId>
+            <version>3.0.6</version>
+        </dependency>
     </dependencies>
 </project>
