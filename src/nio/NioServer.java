@@ -85,11 +85,12 @@ public class NioServer {
             receivebuffer.clear();
             //读取服务器发送来的数据到缓冲区中  
             count = client.read(receivebuffer);
-            if (count > 0) {
+            while (count != -1) {
                 receiveText = new String( receivebuffer.array(),0,count);
                 System.out.println("服务器端接受客户端数据--:"+receiveText);
-                client.register(selector, SelectionKey.OP_WRITE);
+                count = client.read(receivebuffer);
             }
+            client.register(selector, SelectionKey.OP_WRITE);
         } else if (selectionKey.isWritable()) {
             //将缓冲区清空以备下次写入  
             sendbuffer.clear();
@@ -100,8 +101,10 @@ public class NioServer {
             sendbuffer.put(sendText.getBytes());
             //将缓冲区各标志复位,因为向里面put了数据标志被改变要想从中读取数据发向服务器,就要复位
             sendbuffer.flip();
-            //输出到通道  
-            client.write(sendbuffer);
+            //输出到通道
+            while (sendbuffer.hasRemaining()){
+                client.write(sendbuffer);
+            }
             System.out.println("服务器端向客户端发送数据--："+sendText);
             client.register(selector, SelectionKey.OP_READ);
         }

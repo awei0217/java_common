@@ -14,9 +14,13 @@ import java.util.Set;
  */
 public class NioClient {
 
-    /*标识数字*/
+    /**
+     * 标识数字
+     */
     private static int flag = 0;
-    /*缓冲区大小*/
+    /**
+    * 缓冲区大小
+    */
     private static int BLOCK = 4096;
     /*发送数据缓冲区*/
     private static ByteBuffer sendbuffer = ByteBuffer.allocate(BLOCK);
@@ -39,7 +43,6 @@ public class NioClient {
         // 连接
         socketChannel.connect(SERVER_ADDRESS);
         // 分配缓冲区大小内存
-
         Set<SelectionKey> selectionKeys;
         Iterator<SelectionKey> iterator;
         SelectionKey selectionKey;
@@ -63,7 +66,7 @@ public class NioClient {
                     client = (SocketChannel) selectionKey.channel();
                     // 判断此通道上是否正在进行连接操作。
                     // 完成套接字通道的连接过程。
-                    if (client.isConnectionPending()) {
+                    while (client.isConnectionPending()) {
                         client.finishConnect();
                         System.out.println("完成连接!");
                         sendbuffer.clear();
@@ -78,12 +81,12 @@ public class NioClient {
                     receivebuffer.clear();
                     //读取服务器发送来的数据到缓冲区中
                     count=client.read(receivebuffer);
-                    if(count>0){
+                    while(count != -1){
                         receiveText = new String( receivebuffer.array(),0,count);
                         System.out.println("客户端接受服务器端数据--:"+receiveText);
-                        client.register(selector, SelectionKey.OP_WRITE);
+                        count = client.read(receivebuffer);
                     }
-
+                    client.register(selector, SelectionKey.OP_WRITE);
                 } else if (selectionKey.isWritable()) {
                     sendbuffer.clear();
                     client = (SocketChannel) selectionKey.channel();
@@ -91,7 +94,10 @@ public class NioClient {
                     sendbuffer.put(sendText.getBytes());
                     //将缓冲区各标志复位,因为向里面put了数据标志被改变要想从中读取数据发向服务器,就要复位
                     sendbuffer.flip();
-                    client.write(sendbuffer);
+                    // 将缓冲区数据写入通道中
+                    while (sendbuffer.hasRemaining()){
+                        client.write(sendbuffer);
+                    }
                     System.out.println("客户端向服务器端发送数据--："+sendText);
                     client.register(selector, SelectionKey.OP_READ);
                 }
