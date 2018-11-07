@@ -5,6 +5,7 @@ import java.util.*;
 
 /**
  * LFU是最近最不常用
+ * @author sunpengwei
  */
 public class LFUCacheManager {
 

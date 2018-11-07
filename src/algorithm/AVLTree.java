@@ -35,7 +35,9 @@ public class AVLTree<T extends Comparable> {
     }
 
     private Node<T> delete(Node<T> parent,T value){
-        if(parent == null)  return null;
+        if(parent == null){
+            return null;
+        }
 
         System.out.println("删除进入到："+parent.value);
 
@@ -56,7 +58,9 @@ public class AVLTree<T extends Comparable> {
             Node<T> newDeletedNode = maxLeftNode;
             while(maxLeftNode != null){
                 maxLeftNode = maxLeftNode.right;
-                if(maxLeftNode != null)     newDeletedNode = maxLeftNode;
+                if(maxLeftNode != null){
+                    newDeletedNode = maxLeftNode;
+                }
             }
 
             //找到了最新要删除的节点newDeletedNode，先将该节点的值赋给parent，然后删除最新要删除的节点
@@ -222,7 +226,9 @@ public class AVLTree<T extends Comparable> {
          * @return
          */
         private int calculateHeight(Node<T> tree){
-            if(tree == null)    return -1;
+            if(tree == null){
+                return -1;
+            }
 
             int leftHeight = calculateHeight(tree.left);
             int rightHeight = calculateHeight(tree.right);

@@ -1,7 +1,5 @@
-package jdk8;/*
-package com.jd.practice.jdk8Test;
+package jdk8;
 
-*/
 /**
  * Created by sunpengwei on 2016/10/20.
  */

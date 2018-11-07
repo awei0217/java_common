@@ -5,6 +5,7 @@ import java.util.*;
 
 /**
  * LRU是最近最少使用
+ * @author sunpengwei
  */
 public class LRUCarcheManager {
 

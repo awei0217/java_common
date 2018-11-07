@@ -27,7 +27,7 @@ public class ScatterTest {
 
         try {
             FileInputStream fileInputStream = new FileInputStream(new File("E://1.txt"));
-            fileInputStream.read()
+            fileInputStream.read();
             FileChannel  fileChannel = fileInputStream.getChannel();
             /**
              * 注意buffer首先被插入到数组，然后再将数组作为channel.read() 的输入参数。
