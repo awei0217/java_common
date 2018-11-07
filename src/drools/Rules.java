@@ -1,7 +1,5 @@
 package drools;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.kie.api.io.Resource;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -18,7 +16,6 @@ import java.util.List;
 
 public final class Rules {
 
-	private static final Logger LOGGER = LogManager.getLogger(Rules.class);
 
 	final Flux<RuleEntity> entities;
 
@@ -73,9 +70,9 @@ public final class Rules {
 	}
 
 	public void toResource(RuleEntity entity) {
-		if(LOGGER.isInfoEnabled()){
-			LOGGER.info("规则："+"serviceName:"+entity.toPackageName()+ " ruleName:"+entity.getRuleName()+ "version:"+entity.getRuleVersion()+"初始化");
-		}
+
+		System.out.println("规则："+"serviceName:"+entity.toPackageName()+ " ruleName:"+entity.getRuleName()+ "version:"+entity.getRuleVersion()+"初始化");
+
 	}
 
 }
