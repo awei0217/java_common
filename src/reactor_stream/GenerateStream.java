@@ -46,8 +46,8 @@ public class GenerateStream {
         },FluxSink.OverflowStrategy.BUFFER)
                 .onBackpressureBuffer(Optional.ofNullable(maxBufferSize).orElse(pressureBufferSize), event -> { dataHandlerService.onEventOverflow(event); },BufferOverflowStrategy.DROP_OLDEST)
                 .publishOn(Schedulers.elastic())
-                .subscribeOn(Schedulers.parallel());
-//                .delayElements(Duration.ofSeconds(1L)) ;
+                .subscribeOn(Schedulers.parallel())
+                .delayElements(Duration.ofSeconds(1)) ;
         subscriber = new BaseSubscriber<List<Object>>() {
             @Override
             protected void hookOnSubscribe(Subscription subscription) { // 订阅时首先向上游请求一个元素
@@ -57,7 +57,8 @@ public class GenerateStream {
             @Override
             protected void hookOnNext(List<Object> events) {
                 dataHandlerService.doNext(events);
-                request(1); //每次处理完一个元素后再请求一个
+                //每次处理完一个元素后再请求一个
+                request(1);
             }
 
             @Override
@@ -82,11 +83,22 @@ public class GenerateStream {
     }
 
     interface Listener {
+        /**
+         * 生产一个元素
+         * @param object
+         */
         void newNext(Object object);
 
+        /**
+         * 生产一个完成标志
+         */
         void newComplete();
     }
 
+    /**
+     * @param millisecond 从缓冲区创建到缓冲区关闭和发射的持续时间。
+     * @return
+     */
     public GenerateStream init(Integer millisecond){
         bridge.buffer(Duration.ofMillis(Optional.ofNullable(millisecond).orElse(10))).subscribe(subscriber);
         return this;

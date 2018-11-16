@@ -4,6 +4,9 @@ import reactor.core.publisher.Flux;
 
 import java.util.List;
 
+/**
+ * @author sunpengwei
+ */
 public interface DataHandlerService {
 
 
@@ -24,6 +27,10 @@ public interface DataHandlerService {
      */
     void onComplete();
 
+    /**
+     * 在数据元素溢出时对元素的处理方法
+     * @param event
+     */
     void onEventOverflow(Object event);
 
     /**

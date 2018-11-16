@@ -83,7 +83,7 @@ public class EventBus {
                 if (maxThreadNum - activeThreadNum > eventList.size()){
                     for (Event event:eventList){
                         EventHandler eventHandler = eventEventHandlerMapRegister.get(event.getEventType());
-                        executorService.submit(new HandlerRunnable(eventHandler,event,task));
+                        executorService.execute(new HandlerRunnable(eventHandler,event,task));
                     }
                     break;
                 }

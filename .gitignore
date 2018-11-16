@@ -1,5 +1,6 @@
 .git/*
 /**/.idea
+/target
 /*/target
 /*/*/target
 /*/*/*/target
@@ -9,3 +10,4 @@
 .setting
 *.lib
 *.jar
+/java/net
