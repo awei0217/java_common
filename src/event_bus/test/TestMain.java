@@ -12,7 +12,7 @@ import java.util.concurrent.BlockingQueue;
  * @创建人 sunpengwei
  * @创建时间 2018/10/24
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class TestMain {
 
@@ -25,10 +25,11 @@ public class TestMain {
         events.add(new HandlerEvent());
         events.add(new OuputEvent());
 
-        BlockingQueue<Input> inputBlockingQueue = new ArrayBlockingQueue<Input>(100);
-        BlockingQueue<Handler> handlerBlockQueue = new ArrayBlockingQueue<Handler>(100);
+        BlockingQueue<Input> inputBlockingQueue = new ArrayBlockingQueue<Input>(1000);
+        BlockingQueue<Handler> handlerBlockQueue = new ArrayBlockingQueue<Handler>(1000);
         AbstractTask task = TestTask.buildTask(events,inputBlockingQueue,handlerBlockQueue);
         eventBus.put(task);
+
         eventBus.start();
     }
 }

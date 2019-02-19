@@ -1,13 +1,15 @@
 package cache;
 
 import org.mapdb.*;
+
 import java.io.File;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @创建人 sunpengwei
  * @创建时间 2018/4/20
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class MapDbConfig {
 
@@ -37,13 +39,18 @@ public class MapDbConfig {
                .make();
     }
 
+    public DB initOffHeapDB(){
+        return DBMaker.memoryDirectDB()
+              .make();
+    }
+
     /**
      *@描述 BTreeMap 采用b+树的数据结构缓存
      *@参数  [DBDisk]
      *@返回值  org.mapdb.BTreeMap<java.lang.String,java.lang.String>
      *@创建人  sunpengwei
      *@创建时间  com.jd.lbs.derive.config.cache
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public BTreeMap<String,String> getBTreeMap (DB DBDisk){
 
@@ -53,42 +60,33 @@ public class MapDbConfig {
                 .createOrOpen();
     }
 
+    public HTreeMap<String,String> getHTreeMap (DB DBDisk){
 
-    // 测试，btreemap  在get 上比 htreemap 性能要好多。快40倍，在put 上稍微慢一点
-    public static void main(String[] args) {
+        return (HTreeMap<String, String>) DBDisk.hashMap("btreemap")
+                .valueSerializer(Serializer.STRING)
+                .counterEnable()
+                .createOrOpen();
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(1);
         MapDbConfig mapDbConfig = new MapDbConfig();
-        DB db =mapDbConfig.initDB();
+        DB db =mapDbConfig.initOffHeapDB(); //611538
         BTreeMap<String,String> bTreeMap = mapDbConfig.getBTreeMap(db);
 
-       /* long Trrstart = System.currentTimeMillis();
-        for(int i = 0;i<1000000;i++){
-            bTreeMap.put("EBUTESTB"+i,"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+        for (int i=1;i< 50000;i++){
+            bTreeMap.put("EMG0123456789"+i,"EMG0123456789"+i);
         }
-        long Treeend = System.currentTimeMillis();
-        System.out.println("mapdb put 100万数据耗时："+(Treeend-Trrstart)/1000 +" 秒");*/
-
-        long getBStart = System.currentTimeMillis();
-        System.out.println("get EBUTESTB105001 value"+bTreeMap.get("EBUTESTB105001"));
-        long getBEnd= System.currentTimeMillis();
-        System.out.println("get 中间一条数据耗时："+ (getBEnd-getBStart)+" 豪秒");
-
-        // 还需要测试 并发性能
-       /* for (int i = 0;i< 20;i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        for(int i = 0;i<200;i++){
-                            bTreeMap.put("EBUTESTB"+i,String.valueOf(RandomUtils.nextLong()));
-                        }
-                    }
-                }
-            }).start();
+        long start = System.nanoTime(); //230060354
+                                        //1379608180
+        for (int i=1;i< 50000;i++){
+            System.out.println(bTreeMap.get("EMG0123456789"+i));
         }
+        System.out.println(System.nanoTime()-start);
+        countDownLatch.await();
 
-        while (true){
-            System.out.println("get EBUTESTB100 value: "+bTreeMap.get("EBUTESTB100"));
-        }*/
+
 
     }
 }

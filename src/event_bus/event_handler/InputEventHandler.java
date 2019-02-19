@@ -9,7 +9,7 @@ import event_bus.task.Task;
  * @author sunpengwei
  * @创建时间 2018/10/23
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class InputEventHandler<I> implements EventHandler  {
 
@@ -18,10 +18,10 @@ public class InputEventHandler<I> implements EventHandler  {
     @Override
     public void handler(Event event, AbstractTask task) {
         if(event.getEventType().equals(EventType.INPUT_EVENT)){
-            I i = (I) task.input();
+            I i = null;
             while (true){
                 try {
-                    i= (I) task.input();
+                    i= (I) task.input(task.getObject());
                 }catch (Exception e){
                     task.onFail(e);
                     continue;

@@ -8,7 +8,7 @@ import java.util.function.Supplier;
  * @创建人 sunpengwei
  * @创建时间 2018/9/11
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class OptionalTest {
 

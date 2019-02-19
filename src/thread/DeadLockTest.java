@@ -4,7 +4,7 @@ package thread;
  * @创建人 sunpengwei
  * @创建时间 2018/10/25
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 
 /**

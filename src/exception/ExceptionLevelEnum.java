@@ -4,7 +4,7 @@ package exception;
  * @创建人 sunpengwei
  * @创建时间 2018/3/9
  * @描述 异常等级枚举类
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public enum ExceptionLevelEnum {
 

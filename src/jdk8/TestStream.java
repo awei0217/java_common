@@ -21,7 +21,7 @@ public class TestStream {
 				new Task( Status.OPEN, 13 ),
 				new Task( Status.CLOSED, 8 )
 		);
-		long s = tasks.stream().filter(task -> task.getStatus()!=Status.CLOSED).mapToInt(Task::getPoints).sum();
+		long s = tasks.stream().filter(task -> task.getStatus()==Status.CLOSED).mapToInt(Task::getPoints).sum();
 		System.out.println(s);
 
 		final double totalPoints = tasks

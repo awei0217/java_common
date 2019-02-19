@@ -4,6 +4,7 @@ package tools;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -11,7 +12,7 @@ import java.util.zip.ZipOutputStream;
  * @Author sunpengwei
  * @创建时间 2018/4/8
  * @描述 文件压缩工具类
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class ZipUtils {
 
@@ -26,7 +27,7 @@ public class ZipUtils {
      *                         false:所有文件跑到压缩包根目录下(注意：不保留目录结构可能会出现同名文件,会压缩失败)
      * @throws RuntimeException 压缩失败会抛出运行时异常
      * @author sunpengwei
-     * @mail sunpengwei@jd.com
+     * @mail
      */
     public static void toZip(String srcDir, OutputStream out, boolean KeepDirStructure)
             throws RuntimeException {
@@ -59,7 +60,7 @@ public class ZipUtils {
      * @param out      压缩文件输出流
      * @throws RuntimeException 压缩失败会抛出运行时异常
      * @author sunpengwei
-     * @mail sunpengwei@jd.com
+     * @mail
      */
     public static void toZip(List<File> srcFiles, OutputStream out) throws RuntimeException {
         long start = System.currentTimeMillis();
@@ -105,7 +106,7 @@ public class ZipUtils {
      *                         false:所有文件跑到压缩包根目录下(注意：不保留目录结构可能会出现同名文件,会压缩失败)
      * @throws Exception
      * @author sunpengwei
-     * @mail sunpengwei@jd.com
+     * @mail
      */
     private static void compress(File sourceFile, ZipOutputStream zos, String name,
                                  boolean KeepDirStructure) throws Exception {
@@ -154,18 +155,24 @@ public class ZipUtils {
      * @param args
      * @throws Exception
      * @author sunpengwei
-     * @mail sunpengwei@jd.com
+     * @mail
      */
     public static void main(String[] args) throws Exception {
         /** 测试压缩方法1  */
-        FileOutputStream fos1 = new FileOutputStream(new File("c:/mytest01.zip"));
-        ZipUtils.toZip("D:/log", fos1, true);
+        /*FileOutputStream fos1 = new FileOutputStream(new File("c:/mytest01.zip"));
+        ZipUtils.toZip("D:/log", fos1, true);*/
 
         /** 测试压缩方法2  */
-        List<File> fileList = new ArrayList<>();
+        /*List<File> fileList = new ArrayList<>();
         fileList.add(new File("D:/Java/jdk1.7.0_45_64bit/bin/jar.exe"));
         fileList.add(new File("D:/Java/jdk1.7.0_45_64bit/bin/java.exe"));
         FileOutputStream fos2 = new FileOutputStream(new File("c:/mytest02.zip"));
-        ZipUtils.toZip(fileList, fos2);
+        ZipUtils.toZip(fileList, fos2);*/
+
+        Random random = new Random();
+        for (int i = 0;i<10000;i++){
+            System.out.println(random.nextInt(3 * 60 * 1000));
+        }
+
     }
 }

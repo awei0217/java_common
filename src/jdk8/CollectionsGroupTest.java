@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @创建人 sunpengwei
  * @创建时间 2018/9/19
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class CollectionsGroupTest {
 
@@ -56,7 +56,6 @@ public class CollectionsGroupTest {
         //把集合转成map
         Map<Integer,String> map = list1.stream().collect(Collectors.toMap(Student::getId,Student::getName));
         System.out.println(Optional.ofNullable(null).orElse(Arrays.asList(1,2,3)));
-
 
 
 

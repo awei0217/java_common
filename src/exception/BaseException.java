@@ -4,7 +4,7 @@ package exception;
  * @创建人 sunpengwei
  * @创建时间 2018/3/9
  * @描述 基类异常，继承自RuntimeExption ,系统的业务异常，系统异常等全部集成这个异常类
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class BaseException extends RuntimeException {
 
@@ -35,7 +35,7 @@ public class BaseException extends RuntimeException {
 	 *@返回值
 	 *@创建人
 	 *@创建时间
-	 *@邮箱  sunpengwei@jd.com
+	 *@邮箱
 	 */
 	public BaseException(Integer  level,Integer exceptionCode ,String exceptionMsg , Throwable e){
 		super("level:"+level+",exceptionCode:" +exceptionCode + ",exceptionMsg:" +exceptionMsg,e);
@@ -52,7 +52,7 @@ public class BaseException extends RuntimeException {
 	 *@返回值
 	 *@创建人
 	 *@创建时间
-	 *@邮箱  sunpengwei@jd.com
+	 *@邮箱
 	 */
 	public BaseException(Integer exceptionCode ,String exceptionMsg ){
 		this(ExceptionLevelEnum.GRAVE_THREE_LEVEL.getExceptionLevel(),exceptionCode,exceptionMsg,null);
@@ -64,7 +64,7 @@ public class BaseException extends RuntimeException {
 	 *@返回值
 	 *@创建人
 	 *@创建时间
-	 *@邮箱  sunpengwei@jd.com
+	 *@邮箱
 	 */
 	public BaseException(Integer level,Integer exceptionCode ,String exceptionMsg ){
 		this(level,exceptionCode,exceptionMsg,null);
@@ -77,7 +77,7 @@ public class BaseException extends RuntimeException {
 	 *@返回值
 	 *@创建人
 	 *@创建时间
-	 *@邮箱  sunpengwei@jd.com
+	 *@邮箱
 	 */
 	public BaseException(Integer exceptionCode ,String exceptionMsg ,Throwable e){
 		this(ExceptionLevelEnum.GRAVE_THREE_LEVEL.getExceptionLevel(),exceptionCode,exceptionMsg,e);

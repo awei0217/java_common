@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
  * @Author sunpengwei
  * @创建时间 2018/10/20
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  * 缓冲区学习测试
  */
 public class ByteBufferTest {
@@ -49,6 +49,8 @@ public class ByteBufferTest {
          * 判断缓冲区是否有元素，true 有 false 没有
          */
         byteBuffer.hasRemaining();
+
+
 
     }
 }

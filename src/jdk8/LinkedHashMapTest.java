@@ -7,7 +7,7 @@ import java.util.Map;
  * @Author sunpengwei
  * @创建时间 2018/11/5
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class LinkedHashMapTest {
 

@@ -3,7 +3,7 @@ package distributed_id;
  * @创建人 sunpengwei
  * @创建时间 2018/4/23
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 /**
  * Twitter_Snowflake<br>
@@ -138,7 +138,7 @@ public class SnowflakeIdWorker {
         return System.currentTimeMillis();
     }
 
-    //==============================Test=============================================
+    //==============================PatternMatch=============================================
     /** 测试 */
     public static void main(String[] args) {
         SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);

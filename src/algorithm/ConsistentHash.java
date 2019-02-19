@@ -4,7 +4,7 @@ package algorithm;
  * @author sunpengwei
  * @创建时间 2018/11/12
  * @描述 一致性hash算法
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 
 public class ConsistentHash {

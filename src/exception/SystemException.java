@@ -4,7 +4,7 @@ package exception;
  * @创建人 sunpengwei
  * @创建时间 2018/3/9
  * @描述 系统问题时抛出此类异常
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class SystemException extends BaseException {
 

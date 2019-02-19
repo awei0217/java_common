@@ -9,7 +9,7 @@ import java.nio.channels.FileChannel;
 /**
  * @Author sunpengwei
  * @创建时间 2018/10/20
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  * 文件通道学习测试
  */
 public class FileChannelTest {

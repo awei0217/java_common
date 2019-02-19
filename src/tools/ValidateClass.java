@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @描述 校验研发定义的实体类类型,使用反射,对性能要求高的请不要使用，不支持嵌套使用,比如Persion中引用一个Student ,那么不支持校验Student的字段是否为空，请注意 基本类型 字段存在默认值，不会做为空校验。
  * @创建人 sunpengwei
  * @创建时间 2016/12/16.
- * @邮箱 sunpengwei@jd.com
+ * @邮箱
  */
 public class ValidateClass {
 	/**

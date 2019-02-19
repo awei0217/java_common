@@ -4,7 +4,7 @@ package exception;
  * @创建人 sunpengwei
  * @创建时间 2018/3/9
  * @描述 检验必填参数为空时抛出此类异常,不支持传入自定义异常编码，此异常编码系统已经定义好
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class ParamIsNotNullException extends BaseException {
 

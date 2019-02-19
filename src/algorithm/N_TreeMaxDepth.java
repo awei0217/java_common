@@ -9,7 +9,7 @@ import java.util.List;
  * @author sunpengwei
  * @创建时间 2018/11/15
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class N_TreeMaxDepth {
     static class Node {

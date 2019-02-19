@@ -4,7 +4,7 @@ package event_bus.task;
  * @author sunpengwei
  * @创建时间 2018/10/23
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public interface Task<I,H,O> {
 
@@ -12,7 +12,7 @@ public interface Task<I,H,O> {
      * 输入数据
      * @return
      */
-    I input();
+    I input(Object o);
     /**
      * 处理数据
      * @param i

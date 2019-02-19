@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
  * @Author sunpengwei
  * @创建时间 2018/10/23
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public abstract class AbstractTask<I,H,O> implements Task<I,H,O> {
 
@@ -25,6 +25,11 @@ public abstract class AbstractTask<I,H,O> implements Task<I,H,O> {
      * 处理数据的缓存队列
      */
     private BlockingQueue<H> handlerQueue;
+
+    /**
+     * input方法入参
+     */
+    private Object object;
 
 
 
@@ -57,5 +62,13 @@ public abstract class AbstractTask<I,H,O> implements Task<I,H,O> {
 
     public void setHandlerQueue(BlockingQueue<H> handlerQueue) {
         this.handlerQueue = handlerQueue;
+    }
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
     }
 }

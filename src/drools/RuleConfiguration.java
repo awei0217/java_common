@@ -11,7 +11,7 @@ import java.util.Map;
  * @创建人 sunpengwei
  * @创建时间 2018/6/19
  * @描述 规则引擎配置类，引入lbs-common报的需要把RuleConfiguration对象交给spring容器管理
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 
 /** 使用方法
@@ -50,7 +50,7 @@ public class RuleConfiguration implements InitializingBean {
      *@返回值  void
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     @Override
     public void afterPropertiesSet() throws Exception {

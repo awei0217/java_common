@@ -12,18 +12,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @创建人 sunpengwei
  * @创建时间 2018/10/24
  * @描述
- * @联系邮箱 sunpengwei@jd.com
+ * @联系邮箱
  */
 public class TestTask extends AbstractTask<Input,Handler,Output> {
 
     private AtomicInteger input = new AtomicInteger(0);
     private AtomicInteger success = new AtomicInteger(0);
     @Override
-    public Input input() {
+    public Input input(Object o) {
         if (input.incrementAndGet() < 1000){
             try {
                 //模拟查询数据 20 毫秒
-                Thread.sleep(20);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
 
             }
@@ -37,7 +37,7 @@ public class TestTask extends AbstractTask<Input,Handler,Output> {
     public Handler handler(Input input) {
         try {
             //模拟处理数据 20 毫秒
-            Thread.sleep(20);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
 
         }
@@ -48,7 +48,7 @@ public class TestTask extends AbstractTask<Input,Handler,Output> {
     public Output output(Handler handler) {
         try {
             //模拟处理数据 20 毫秒
-            Thread.sleep(20);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
 
         }

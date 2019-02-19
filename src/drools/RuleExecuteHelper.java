@@ -23,7 +23,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static Object execute(String serviceName, Object... facts) {
 
@@ -38,7 +38,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static Object execute(String serviceName,String globalName,
                                                   Object globalValue, Object... facts) {
@@ -55,7 +55,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static Object execute(String serviceName,Map<String,Object> globalMap, Object... facts) {
 
@@ -76,7 +76,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static Object execute(String serviceName,Map<String,Object> globalMap,List<Object> facts) {
 
@@ -89,7 +89,7 @@ public class RuleExecuteHelper {
      *@返回值  Object
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static Object execute(String serviceName,
                                                    String globalName,
@@ -104,7 +104,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static  Object execute(String serviceName, List<Object> facts) {
 
@@ -118,7 +118,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static  Object execute(List<String> serviceNameList, List<Object> facts) {
         if(CollectionUtils.isEmpty(facts)){
@@ -133,7 +133,7 @@ public class RuleExecuteHelper {
      *@返回值  List<DefaultFactHandle>
      *@创建人  sunpengwei
      *@创建时间  2018/6/19
-     *@邮箱  sunpengwei@jd.com
+     *@邮箱
      */
     public static Object execute(List<String> serviceNameList,Object ... facts) {
         if(CollectionUtils.isEmpty(serviceNameList)){
