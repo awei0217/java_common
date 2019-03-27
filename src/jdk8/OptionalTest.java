@@ -1,6 +1,8 @@
 package jdk8;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -40,6 +42,15 @@ public class OptionalTest {
         });
         student.setName(Optional.ofNullable(student.getName()).orElse("ss"));
         student.setName(s1);
+
+        List<Integer> list  = null;
+        List<Integer> list1  = new ArrayList<>(10);
+        list1.add(1);
+        list1.add(2);
+        List<Integer> integers =Optional.ofNullable(list1).orElse(new ArrayList<Integer>());
+
+        integers.stream().forEach(System.out::println);
+
     }
 
 }
