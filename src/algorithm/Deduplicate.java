@@ -1,6 +1,12 @@
 package algorithm;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -38,5 +44,23 @@ public class Deduplicate {
             current++;
         }
         return String.valueOf(input).substring(0,current).toCharArray();
+    }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        for(String s : strs) {
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars);
+            String key = String.valueOf(chars);
+            if(!map.containsKey(key)) map.put(key, new ArrayList<>());
+            map.get(key).add(s);
+        }
+        for(String key : map.keySet()) {
+            List<String> list = map.get(key);
+            Collections.sort(list);
+            result.add(list);
+        }
+        return result;
     }
 }

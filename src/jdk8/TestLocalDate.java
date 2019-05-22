@@ -3,13 +3,14 @@
  */
 package jdk8;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
+import java.util.*;
+import java.util.function.Predicate;
 
 /**
  *
@@ -18,9 +19,18 @@ import java.util.Optional;
  */
 public class TestLocalDate {
 
+
     public static void main(String[] args) {
 
+
+        Predicate<String> p = o -> o.equals("test");
+
+        System.out.println(p.test("test"));
+
         LocalDate localDate =  dateToLocalDate(new Date());
+        Date date = localDateToDate(localDate);
+
+        System.out.println(date);
 
         System.out.println(localDate.format(DateTimeFormatter.ofPattern("yyyy年MM月dd日")));
 
@@ -84,11 +94,11 @@ public class TestLocalDate {
 
 
         //根据生日的月和日组装一个日期
-        LocalDate birthMonthDay = LocalDate.of(0,1,1);
+        LocalDate birthMonthDay = LocalDate.of(2019,4,1);
         //根据保单的月和日组装一个日期
-        LocalDate policyMonthDay = LocalDate.of(0,1,2);
+        LocalDate policyMonthDay = LocalDate.of(2019,4,1);
 
-        System.out.println(policyMonthDay.isAfter(birthMonthDay));
+        System.out.println(policyMonthDay.isAfter(birthMonthDay)+"。。。");
 
         System.out.println(LocalDate.now().plusDays(-1).isBefore(LocalDate.now()));
 
@@ -98,6 +108,11 @@ public class TestLocalDate {
 
         System.out.println(test.getChronology());
 
+        System.out.println(LocalDate.now().toEpochDay() - LocalDate.now().toEpochDay());
+
+        computerWeek();
+
+        computeLastDate();
     }
 
     /**
@@ -129,4 +144,36 @@ public class TestLocalDate {
 
         return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
+
+    public static void computerWeek(){
+       /* TemporalField weekFields = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+        int startWeek = LocalDate.now().get(weekFields);
+        LocalDate l =  LocalDate.now().plusYears(20).plusMonths(1).plusDays(6);
+        System.out.println(l);
+        int oneWeek =l.get(weekFields);
+        System.out.println(startWeek - oneWeek);
+
+        System.out.println(l.with(DayOfWeek.SATURDAY));*/
+    }
+
+    public static void computeLastDate(){
+
+        //定义周几
+
+        //定义退休时间
+        LocalDate l =  LocalDate.now().plusYears(20).plusMonths(1).plusDays(6);
+
+        LocalDate weekDate = l.with(DayOfWeek.SUNDAY);
+
+        System.out.println(l);
+        System.out.println(weekDate);
+        //如果算出的时间在退休之后
+        if(weekDate.isAfter(l)){
+
+            weekDate = weekDate.plusWeeks(-1);
+        }
+        System.out.println(weekDate);
+    }
+
+
 }

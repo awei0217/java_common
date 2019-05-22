@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -67,11 +68,23 @@ public class CollectionsGroupTest {
     @Test
     public void testStreamParallel(){
         long start = System.currentTimeMillis();
-        CountDownLatch countDownLatch = new CountDownLatch(50);
-        for (int i=0;i<50;i++){
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        AtomicReference<List<Integer>> list = new AtomicReference<>();
+        for (int i=0;i<1;i++){
+
             new Thread(()->{
                 List<Integer> strs = Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
-                List<Integer> list = strs.stream().parallel().map(j -> sum(j)).collect(Collectors.toList());
+                list.set(strs.stream().parallel().map(j -> {
+
+                    try {
+                        int count = sum(j);
+
+                        return count;
+                    } catch (Exception e) {
+                        return 0;
+                    }
+
+                }).collect(Collectors.toList()));
                 countDownLatch.countDown();
             }).start();
         }
@@ -81,6 +94,7 @@ public class CollectionsGroupTest {
         }
         long end = System.currentTimeMillis();
         System.out.println("并行耗时："+(end-start));
+        list.get().forEach(e -> System.out.println(e));
     }
     /**
      * 测试串行流
@@ -88,8 +102,8 @@ public class CollectionsGroupTest {
     @Test
     public void testSerial(){
         long start = System.currentTimeMillis();
-        CountDownLatch countDownLatch = new CountDownLatch(50);
-        for (int i=0;i<50;i++) {
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        for (int i=0;i<1;i++) {
             new Thread(() ->{
                 List<Integer> strs = Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
                 List<Integer> list = new ArrayList<>();
@@ -108,6 +122,7 @@ public class CollectionsGroupTest {
     }
     private int sum(int i) {
         //模拟耗时
+
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
