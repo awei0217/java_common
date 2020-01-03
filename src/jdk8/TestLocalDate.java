@@ -5,6 +5,7 @@ package jdk8;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalField;
@@ -15,14 +16,14 @@ import java.util.function.Predicate;
 /**
  *
  * @author pengwei.sun
- * @version $Id: TestLocalDate.java, v 0.1 2019Äê03ÔÂ16ÈÕ 1:31 PM pengwei.sun Exp $
+ * @version $Id: TestLocalDate.java, v 0.1 2019ï¿½ï¿½03ï¿½ï¿½16ï¿½ï¿½ 1:31 PM pengwei.sun Exp $
  */
 public class TestLocalDate {
 
 
     public static void main(String[] args) {
 
-
+        System.out.println(LocalDateTime.now().toString());
         Predicate<String> p = o -> o.equals("test");
 
         System.out.println(p.test("test"));
@@ -32,15 +33,15 @@ public class TestLocalDate {
 
         System.out.println(date);
 
-        System.out.println(localDate.format(DateTimeFormatter.ofPattern("yyyyÄêMMÔÂddÈÕ")));
+        System.out.println(localDate.format(DateTimeFormatter.ofPattern("yyyyï¿½ï¿½MMï¿½ï¿½ddï¿½ï¿½")));
 
         localDate = localDate.plusYears(61);
 
-        System.out.println(localDate.format(DateTimeFormatter.ofPattern("yyyyÄêMMÔÂddÈÕ")));
+        System.out.println(localDate.format(DateTimeFormatter.ofPattern("yyyyï¿½ï¿½MMï¿½ï¿½ddï¿½ï¿½")));
 
         localDate = localDate.withMonth(4).withDayOfMonth(21);
 
-        System.out.println(localDate.format(DateTimeFormatter.ofPattern("MMÔÂddÈÕ")));
+        System.out.println(localDate.format(DateTimeFormatter.ofPattern("MMï¿½ï¿½ddï¿½ï¿½")));
 
         System.out.println(localDate.getDayOfMonth());
         System.out.println(localDate.getDayOfYear());
@@ -93,12 +94,12 @@ public class TestLocalDate {
 
 
 
-        //¸ù¾ÝÉúÈÕµÄÔÂºÍÈÕ×é×°Ò»¸öÈÕÆÚ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½Âºï¿½ï¿½ï¿½ï¿½ï¿½×°Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         LocalDate birthMonthDay = LocalDate.of(2019,4,1);
-        //¸ù¾Ý±£µ¥µÄÔÂºÍÈÕ×é×°Ò»¸öÈÕÆÚ
+        //ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âºï¿½ï¿½ï¿½ï¿½ï¿½×°Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         LocalDate policyMonthDay = LocalDate.of(2019,4,1);
 
-        System.out.println(policyMonthDay.isAfter(birthMonthDay)+"¡£¡£¡£");
+        System.out.println(policyMonthDay.isAfter(birthMonthDay)+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
         System.out.println(LocalDate.now().plusDays(-1).isBefore(LocalDate.now()));
 
@@ -116,8 +117,8 @@ public class TestLocalDate {
     }
 
     /**
-     * Date ÀàÐÍ×ª»»ÎªJDK8µÄLocalDate
-     * LocalDate¡ª¡ª²»°üº¬¾ßÌåÊ±¼äµÄÈÕÆÚ£¬±ÈÈç2014-01-14¡£Ëü¿ÉÒÔÓÃÀ´´æ´¢ÉúÈÕ£¬ÖÜÄê¼ÍÄîÈÕ
+     * Date ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªJDK8ï¿½ï¿½LocalDate
+     * LocalDateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½2014-01-14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param date
      * @return
      */
@@ -131,8 +132,8 @@ public class TestLocalDate {
     }
 
     /**
-     * JDK8µÄLocalDate ÀàÐÍ×ª»»Îª Date
-     * LocalDate¡ª¡ª²»°üº¬¾ßÌåÊ±¼äµÄÈÕÆÚ£¬±ÈÈç2014-01-14¡£Ëü¿ÉÒÔÓÃÀ´´æ´¢ÉúÈÕ£¬ÖÜÄê¼ÍÄîÈÕ
+     * JDK8ï¿½ï¿½LocalDate ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îª Date
+     * LocalDateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½2014-01-14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param localDate
      * @return
      */
@@ -158,16 +159,16 @@ public class TestLocalDate {
 
     public static void computeLastDate(){
 
-        //¶¨ÒåÖÜ¼¸
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½
 
-        //¶¨ÒåÍËÐÝÊ±¼ä
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         LocalDate l =  LocalDate.now().plusYears(20).plusMonths(1).plusDays(6);
 
         LocalDate weekDate = l.with(DayOfWeek.SUNDAY);
 
         System.out.println(l);
         System.out.println(weekDate);
-        //Èç¹ûËã³öµÄÊ±¼äÔÚÍËÐÝÖ®ºó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½
         if(weekDate.isAfter(l)){
 
             weekDate = weekDate.plusWeeks(-1);

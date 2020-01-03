@@ -45,7 +45,9 @@
     查看当前mysql使用的引擎   show variables like '%storage_engine%';
     查看mysql的版本 select version();
     查看事务隔离级别 SELECT @@tx_isolation
-    设置事务隔离级别 set session transaction isolation level read uncommitted;
+    设置事务隔离级别 set session transaction isolation level rencad ucommitted;
+    SET GLOBAL TRANSACTION ISOLATION LEVEL READ COMMITTED;
+   
     禁止自动提交 set autocommit=0;
      
     #设置事务特性,必须在所有事务开始前设置

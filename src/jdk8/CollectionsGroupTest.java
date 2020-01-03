@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 public class CollectionsGroupTest {
 
     public static void main(String[] args) {
+
+        CountDownLatch countDownLatch = new CountDownLatch(1);
         List<Integer> strs = Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
         List<Integer> strs1 = new ArrayList<>();
 
@@ -38,6 +40,40 @@ public class CollectionsGroupTest {
         //1.1根据某个属性分组计数
         Map<String,Long> result1=list1.stream().collect(Collectors.groupingBy(Student::getGroupId,Collectors.counting()));
         System.out.println(result1);
+        Map<String,List<Student>> result5=list1.stream().collect(Collectors.groupingBy(Student::getGroupId));
+
+
+
+        List<Student> list= Arrays.asList(
+                new Student(1,"one","zhao"),
+                new Student(2,"one","qian"),
+                new Student(3,"two","sun")
+        );
+        //1.1根据某个属性分组计数
+        Map<String,Long> map = new HashMap();
+        for (Student s : list){
+            if(map.containsKey(s.getGroupId())){
+                Long l = map.get(s.getGroupId());
+                map.put(s.getGroupId(),l+1);
+            }else{
+                map.put(s.getGroupId(),1L);
+            }
+        }
+
+
+        List<String> list12 = new ArrayList();
+
+        list12.stream().collect(Collectors.toMap(
+                s -> {return s;},
+                s -> {return 1;},
+                (Integer src,Integer des) ->{
+                    return src+des;
+                }
+        ));
+
+
+
+        System.out.println(result5);
         //1.2根据整个实体对象分组计数,当其为String时常使用
         Map<Student,Long> result2=list1.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
         System.out.println(result2);
@@ -53,12 +89,17 @@ public class CollectionsGroupTest {
         );
         System.out.println(result3);
         //从集合中找出任意一个，否则，抛异常
-        Integer s = strs1.stream().findAny().orElseThrow(()->new RuntimeException("ss"));
+        //Integer s = strs1.stream().findAny().orElseThrow(()->new RuntimeException("ss"));
         //把集合转成map
-        Map<Integer,String> map = list1.stream().collect(Collectors.toMap(Student::getId,Student::getName));
+        Map<Integer,String> map1 = list1.stream().collect(Collectors.toMap(Student::getId,Student::getName));
         System.out.println(Optional.ofNullable(null).orElse(Arrays.asList(1,2,3)));
 
 
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 

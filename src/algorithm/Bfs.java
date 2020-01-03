@@ -11,6 +11,8 @@ import java.util.LinkedList;
 public class Bfs {
 
     public static void main(String[] args) {
+
+        isHappy(19);
         Vertex[] vertices = new Vertex[9];
         for(int i=0;i<vertices.length;i++){
             vertices[i]=  new Vertex(i);
@@ -66,6 +68,20 @@ public class Bfs {
             v.setSearch(true);
         }
         return false;
+    }
+
+    public static boolean isHappy(int n) {
+        if (n==1){
+            return true;
+        }
+
+        String s = String.valueOf(n);
+        int result = 0;
+        for (char c : s.toCharArray()){
+            int num = Integer.parseInt(String.valueOf(c));
+            result = result+num * num;
+        }
+       return isHappy(result);
     }
 }
 
@@ -134,3 +150,5 @@ class Vertex{
         this.neighbors = vertexLinkedList;
     }
 }
+
+

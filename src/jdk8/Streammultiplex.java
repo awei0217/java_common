@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 /**
  *
  * @author pengwei.sun
- * @version $Id: Streammultiplex.java, v 0.1 2019Äê03ÔÂ28ÈÕ 12:00 PM pengwei.sun Exp $
+ * @version $Id: Streammultiplex.java, v 0.1 2019ï¿½ï¿½03ï¿½ï¿½28ï¿½ï¿½ 12:00 PM pengwei.sun Exp $
  */
 public class Streammultiplex {
 
@@ -31,6 +31,8 @@ public class Streammultiplex {
 
         System.out.println(integerStream.get().count());
         System.out.println(integerStream.get().collect(Collectors.toList()).get(0));
+
+
 
     }
 }

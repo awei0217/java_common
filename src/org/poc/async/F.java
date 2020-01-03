@@ -76,7 +76,7 @@ public interface F {
 	}
 
 	static <T, C extends Callback<T>> void async(Listenable<T> listenable, C callback) {
-		Futures.addCallback(listenable.future, callback);
+		//Futures.addCallback(listenable.future, callback);
 	}
 
 	static <T> Listenable<T> immediate(T value) {
@@ -94,12 +94,13 @@ public interface F {
 
 	@SuppressWarnings("unchecked")
 	static <T, O> Listenable<T> transform(Listenable<T> input, Function<? super T, O> function) {
-		return new Listenable<T>((ListenableFuture<T>) Futures.transformAsync(input.future, new AsyncFunction<T, O>() {
-			@Override
-			public ListenableFuture<O> apply(T arg0) throws Exception {
-				return Futures.immediateFuture(function.apply(arg0));
-			}
-		}));
+//		return new Listenable<T>((ListenableFuture<T>) Futures.transformAsync(input.future, new AsyncFunction<T, O>() {
+//			@Override
+//			public ListenableFuture<O> apply(T arg0) throws Exception {
+//				return Futures.immediateFuture(function.apply(arg0));
+//			}
+//		}));
+		return null ;
 	}
 
 	static void shutdown(Executor executor) {

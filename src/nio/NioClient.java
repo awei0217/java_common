@@ -68,7 +68,7 @@ public class NioClient {
                     // 完成套接字通道的连接过程。
                     while (client.isConnectionPending()) {
                         client.finishConnect();
-                        System.out.println("完成连接!");
+                        System.out.println("complete conn");
                         sendbuffer.clear();
                         sendbuffer.put("Hello,Server".getBytes());
                         sendbuffer.flip();
@@ -83,7 +83,7 @@ public class NioClient {
                     count=client.read(receivebuffer);
                     while(count != -1){
                         receiveText = new String( receivebuffer.array(),0,count);
-                        System.out.println("客户端接受服务器端数据--:"+receiveText);
+                        System.out.println("client rec server--:"+receiveText);
                         count = client.read(receivebuffer);
                     }
                     client.register(selector, SelectionKey.OP_WRITE);
@@ -98,7 +98,7 @@ public class NioClient {
                     while (sendbuffer.hasRemaining()){
                         client.write(sendbuffer);
                     }
-                    System.out.println("客户端向服务器端发送数据--："+sendText);
+                    System.out.println("client to server--："+sendText);
                     client.register(selector, SelectionKey.OP_READ);
                 }
             }

@@ -78,12 +78,11 @@ public class MapDbConfig {
         for (int i=1;i< 50000;i++){
             bTreeMap.put("EMG0123456789"+i,"EMG0123456789"+i);
         }
-        long start = System.nanoTime(); //230060354
-                                        //1379608180
+        long start = System.currentTimeMillis();
         for (int i=1;i< 50000;i++){
             System.out.println(bTreeMap.get("EMG0123456789"+i));
         }
-        System.out.println(System.nanoTime()-start);
+        System.out.println((System.currentTimeMillis()-start));
         countDownLatch.await();
 
 

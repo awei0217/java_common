@@ -30,13 +30,13 @@ package thread;
  ===================================================
  "Thread-1":
  at thread.DeadLockTest$ThreadName1.run(DeadLockTest.java:48)
- - waiting to lock <0x0000000770288ae8> (a java.lang.Class for thread.DeadLockTest$A)
+ - waiting to lock <0x0000000770288ae8> (a java.lang.Class for thread.DeadLockTest$NumberConvertMain)
  - locked <0x0000000770288b50> (a java.lang.Class for thread.DeadLockTest$B)
  at java.lang.Thread.run(Thread.java:745)
  "Thread-0":
  at thread.DeadLockTest$ThreadName0.run(DeadLockTest.java:35)
  - waiting to lock <0x0000000770288b50> (a java.lang.Class for thread.DeadLockTest$B)
- - locked <0x0000000770288ae8> (a java.lang.Class for thread.DeadLockTest$A)
+ - locked <0x0000000770288ae8> (a java.lang.Class for thread.DeadLockTest$NumberConvertMain)
  at java.lang.Thread.run(Thread.java:745)
 
  Found 1 deadlock.

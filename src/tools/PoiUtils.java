@@ -31,7 +31,8 @@ public class PoiUtils {
          * 第一个参数，原目录
          * 第二个参数，合并后的文件
          */
-        merger("E:\\oss_oss\\3_2\\","E://merger3_2.xlsx");
+       // merger("E:\\oss_oss\\3_2\\","E://merger3_2.xlsx");
+        readCellType("D:\\20194.xls");
     }
 
     public static void merger(String sourceDir,String targetFile) throws Exception {
@@ -94,4 +95,27 @@ public class PoiUtils {
         fileOut.close();
     }
 
+
+
+    public static void readCellType(String fileName) throws IOException {
+        File file = new File(fileName);
+        InputStream in = new FileInputStream(file);
+        HSSFWorkbook fromExcel = new HSSFWorkbook(in);
+        for(int i = 0; i < fromExcel.getNumberOfSheets(); i++) {//遍历每个sheet
+            HSSFSheet oldSheet = fromExcel.getSheetAt(i);
+            for (int o=0;o<=oldSheet.getLastRowNum();o++){
+                HSSFRow oldRow = (HSSFRow) oldSheet.getRow(o);
+                for (int n =0;n<oldRow.getLastCellNum();n++){
+                    HSSFCell tmpCell = oldRow.getCell(n);
+
+                   if(tmpCell  != null){
+                       if(tmpCell.getCellType() != 0 && tmpCell.getCellType() != 1  && tmpCell.getCellType() != 4 ){
+                           System.out.println(tmpCell.getCellType());
+                       }
+                   }
+                }
+            }
+        }
+
+    }
 }

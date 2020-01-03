@@ -87,7 +87,7 @@ public class NioServer {
             count = client.read(receivebuffer);
             while (count != -1) {
                 receiveText = new String( receivebuffer.array(),0,count);
-                System.out.println("服务器端接受客户端数据--:"+receiveText);
+                System.out.println("server rec client--:"+receiveText);
                 count = client.read(receivebuffer);
             }
             client.register(selector, SelectionKey.OP_WRITE);
@@ -105,7 +105,7 @@ public class NioServer {
             while (sendbuffer.hasRemaining()){
                 client.write(sendbuffer);
             }
-            System.out.println("服务器端向客户端发送数据--："+sendText);
+            System.out.println("server to client--："+sendText);
             client.register(selector, SelectionKey.OP_READ);
         }
     }

@@ -28,12 +28,7 @@ public class OptionalTest {
         } catch (Exception e) {
 
         }
-        Optional.ofNullable(student.getName()).orElseThrow(new Supplier<RuntimeException>() {
-            @Override
-            public RuntimeException get() {
-                return new RuntimeException("ss");
-            }
-        });
+        Optional.ofNullable(student.getName()).orElseThrow(RuntimeException::new);
         String s1 = Optional.ofNullable(student.getName()).orElseGet(new Supplier<String>() {
             @Override
             public String get() {
