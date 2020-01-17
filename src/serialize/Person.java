@@ -7,6 +7,8 @@ package serialize;
  */
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.ParserConfig;
+import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonObject;
 import org.msgpack.MessagePack;
@@ -176,20 +178,19 @@ public class Person {
         msgpack.register(Person.class);
         long start = System.nanoTime();
         for (int i=0;i<100000;i++){
-//             String fs =  JSONObject.toJSONString(person);   //45000 ns   714
+             String fs =  JSONObject.toJSONString(person);   //4500 ns   714
 //             System.out.println(fs.getBytes().length);
 
-             String gs = JsonUtils.gsonToJson(person);//470000  746
+            //String gs = JsonUtils.gsonToJson(person);//47000  746
 
 //            try {
-//                byte[] bytes = msgpack.write(person);  //110000 ns   374
+//                byte[] bytes = msgpack.write(person);  //11000 ns   374
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
         }
         long end = System.nanoTime();
-
-        System.out.println((end-start) / 10000);
+        System.out.println((end-start) / 100000);
     }
 }
 

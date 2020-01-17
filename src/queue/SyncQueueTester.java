@@ -18,26 +18,26 @@ public class SyncQueueTester {
             new SynchronousQueue<Runnable>(true),
             new ThreadPoolExecutor.DiscardPolicy());
 
-    public static void main(String[] args) throws InterruptedException {
-
-        Calendar calendar1 = Calendar.getInstance();
-        calendar1.set(Calendar.DAY_OF_MONTH,0);
-        calendar1.set(Calendar.HOUR_OF_DAY,0);
-        calendar1.set(Calendar.SECOND,0);
-        calendar1.set(Calendar.MINUTE,0);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(calendar1.getTime()));
-        calendar1.set(Calendar.DAY_OF_MONTH,0);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(calendar1.getTime()));
-
-
-        CountDownLatch countDownLatch = new CountDownLatch(1);
-
-        kickOffEntry(1);
-
-
-
-        executor.shutdown();
-    }
+//    public static void main(String[] args) throws InterruptedException {
+//
+//        Calendar calendar1 = Calendar.getInstance();
+//        calendar1.set(Calendar.DAY_OF_MONTH,0);
+//        calendar1.set(Calendar.HOUR_OF_DAY,0);
+//        calendar1.set(Calendar.SECOND,0);
+//        calendar1.set(Calendar.MINUTE,0);
+//        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(calendar1.getTime()));
+//        calendar1.set(Calendar.DAY_OF_MONTH,0);
+//        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(calendar1.getTime()));
+//
+//
+//        CountDownLatch countDownLatch = new CountDownLatch(1);
+//
+//        kickOffEntry(1);
+//
+//
+//
+//        executor.shutdown();
+//    }
 
     private static void kickOffEntry(int index) {
         executor.submit(
@@ -53,5 +53,11 @@ public class SyncQueueTester {
                 }
         );
     }
+
+
+
+
+
+
 
 }
